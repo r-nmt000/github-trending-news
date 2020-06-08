@@ -35,7 +35,13 @@ const TrendListScreen = () => {
               onPress={() => {
               navigation.navigate('TrendDetail', {url: item.url});
             }}>
-              <ListItem chevron title={item.name}/>
+              <ListItem
+                chevron
+                title={item.name}
+                titleStyle={styles.title}
+                subtitle={item.description}
+                leftAvatar={{source: {url: item.avatar}}}
+              />
             </TouchableOpacity>
           )
         }
@@ -45,6 +51,11 @@ const TrendListScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    color: '#27f',
+    fontWeight: 'bold'
+  }
+});
 
 export default TrendListScreen;
