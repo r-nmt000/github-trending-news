@@ -8,7 +8,7 @@ import {
   fetchDevelopers,
 } from '@huchenme/github-trending';
 
-const TrendListScreen = () => {
+const TrendListScreen = ({navigation}) => {
   const [repos, setRepos] = useState(null);
 
   useEffect(() => {
