@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { ListItem } from "react-native-elements";
+import {Icon, ListItem} from "react-native-elements";
 import {
   languages,
   spokenLanguages,
@@ -37,10 +37,29 @@ const TrendListScreen = ({navigation}) => {
             }}>
               <ListItem
                 chevron
+                bottomDivider={true}
                 title={item.name}
                 titleStyle={styles.title}
-                subtitle={item.description}
                 leftAvatar={{source: {url: item.avatar}}}
+                subtitle={
+                  <View>
+                    <Text numberOfLines={1}> {item.description} </Text>
+                    <View style={styles.iconContainer}>
+                      <View style={styles.statsContainer}>
+                        <Icon name='star-o' type='font-awesome' size='14' />
+                        <Text> {item.stars}</Text>
+                      </View>
+                      <View style={styles.statsContainer}>
+                        <Icon name='code-fork' type='font-awesome' size='14' />
+                        <Text> {item.forks}</Text>
+                      </View>
+                      <View style={styles.statsContainer}>
+                        <Icon name='person-outline' type='material' size='14' />
+                        <Text> {item.author}</Text>
+                      </View>
+                    </View>
+                  </View>
+                }
               />
             </TouchableOpacity>
           )
@@ -55,7 +74,18 @@ const styles = StyleSheet.create({
   title: {
     color: '#27f',
     fontWeight: 'bold'
+  },
+  iconContainer: {
+    marginTop: 12,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  statsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
   }
+
 });
 
 export default TrendListScreen;
