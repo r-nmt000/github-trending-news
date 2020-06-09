@@ -1,11 +1,11 @@
 import React from 'react';
+import { WebView } from "react-native-webview";
 import { View, Text, StyleSheet } from 'react-native';
 
-const TrendDetailScreen = () => {
+const TrendDetailScreen = ({route}) => {
+  const url = route.params?.url || null;
   return (
-    <View>
-      <Text>detail</Text>
-    </View>
+    <WebView source={{ uri: url}}/>
   );
 };
 
