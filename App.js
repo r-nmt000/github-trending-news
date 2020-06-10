@@ -14,7 +14,7 @@ import SelectPeriodScreen from "./src/screens/searchOption/SelectPeriodScreen";
 const Stack = createStackNavigator();
 const SearchOptionStack = createStackNavigator();
 
-const FilterFlow = () => {
+const SearchOption = () => {
   return (
     <NavigationContainer>
       <SearchOptionStack.Navigator
@@ -53,7 +53,7 @@ export default function App() {
       drawerBackgroundColor='white'
       drawerPosition='right'
       drawerWidth={300}
-      renderNavigationView={FilterFlow}
+      renderNavigationView={SearchOption}
       ref={drawer}
     >
       <NavigationContainer>
