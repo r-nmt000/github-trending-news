@@ -5,20 +5,55 @@ import { createStackNavigator } from "@react-navigation/stack";
 import DrawerLayout from "react-native-drawer-layout";
 import TrendListScreen from "./src/screens/TrendListScreen";
 import TrendDetailScreen from "./src/screens/TrendDetailScreen";
-import SearchFilterScreen from "./src/screens/SearchFilterScreen";
+import SearchOptionHomeScreen from "./src/screens/searchOption/SearchOptionHomeScreen";
 import {Button, Icon} from "react-native-elements";
+import SelectLanguageScreen from "./src/screens/searchOption/SelectLanguageScreen";
+import SelectSpokenLanguageScreen from "./src/screens/searchOption/SelectSpokenLanguageScreen";
+import SelectPeriodScreen from "./src/screens/searchOption/SelectPeriodScreen";
 
 const Stack = createStackNavigator();
+const SearchOptionStack = createStackNavigator();
+
+const FilterFlow = () => {
+  return (
+    <NavigationContainer>
+      <SearchOptionStack.Navigator
+        initialRouteName="SearchOptionHomeScreen"
+        mode="modal"
+      >
+        <SearchOptionStack.Screen
+          name="SearchOptionHomeScreen"
+          component={SearchOptionHomeScreen}
+          options={{ title: "Search Options"}}
+        />
+        <SearchOptionStack.Screen
+          name="SelectLanguageScreen"
+          component={SelectLanguageScreen}
+          options={{ title: "Language"}}
+        />
+        <SearchOptionStack.Screen
+          name="SelectSpokenLanguageScreen"
+          component={SelectSpokenLanguageScreen}
+          options={{ title: "Spoken Language"}}
+        />
+        <SearchOptionStack.Screen
+          name="SelectPeriodScreen"
+          component={SelectPeriodScreen}
+          options={{ title: "Period"}}
+        />
+      </SearchOptionStack.Navigator>
+    </NavigationContainer>
+  )
+};
 
 export default function App() {
   const drawer = useRef(null);
-
   return (
     <DrawerLayout
       drawerBackgroundColor='white'
       drawerPosition='right'
-      drawerWidth={250}
-      renderNavigationView={SearchFilterScreen}
+      drawerWidth={300}
+      renderNavigationView={FilterFlow}
       ref={drawer}
     >
       <NavigationContainer>
@@ -50,7 +85,7 @@ export default function App() {
             component={TrendDetailScreen}
           />
         </Stack.Navigator>
-      </NavigationContainer>
+    </NavigationContainer>
     </DrawerLayout>
   )
 }

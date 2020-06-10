@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const SearchFilterScreen = () => {
+const SelectPeriodScreen = () => {
   return (
     <View>
-      <Text>search filter screen</Text>
+      <Text>select term screen</Text>
+
     </View>
   );
 };
 
 const styles = StyleSheet.create({});
 
-export default SearchFilterScreen;
+export default SelectPeriodScreen;
