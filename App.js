@@ -64,6 +64,7 @@ export default function App() {
             name="TrendList"
             component={TrendListScreen}
             options={{
+              title: "All / daily",
               headerRight: () => (
                 <Button
                   type='clear'
