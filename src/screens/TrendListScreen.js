@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import {
-  languages,
-  spokenLanguages,
-  fetchRepositories,
-  fetchDevelopers,
-} from '@huchenme/github-trending';
+import { fetchRepositories } from '@huchenme/github-trending';
 import TrendListItem from "../components/TrendListItem";
 
 const TrendListScreen = ({navigation}) => {
   const [repos, setRepos] = useState(null);
 
   useEffect(() => {
-    fetchRepositories({language: 'ruby', since: 'monthly'}).then(
+    fetchRepositories({language: '', since: 'monthly'}).then(
       (repositories) => {
         setRepos(repositories);
       }

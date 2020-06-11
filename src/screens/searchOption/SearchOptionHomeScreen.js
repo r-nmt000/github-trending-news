@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { ListItem } from "react-native-elements";
+import { Context as SearchOptionContext } from "../../context/searchOptionContext";
 
 const SearchOptionHomeScreen = ({navigation}) => {
+  const { state } = useContext(SearchOptionContext);
   return (
     <View style={styles.homeContainer}>
       <TouchableOpacity
@@ -16,7 +18,7 @@ const SearchOptionHomeScreen = ({navigation}) => {
           title={
             <View style={styles.listItemContainer}>
               <Text>Language</Text>
-              <Text>All</Text>
+              <Text>{state.language ? state.language : 'All'}</Text>
             </View>
           }
         />
@@ -32,7 +34,7 @@ const SearchOptionHomeScreen = ({navigation}) => {
           title={
             <View style={styles.listItemContainer}>
               <Text>Period</Text>
-              <Text>daily</Text>
+              <Text>{state.period}</Text>
             </View>
           }
         />
@@ -48,7 +50,7 @@ const SearchOptionHomeScreen = ({navigation}) => {
           title={
             <View style={styles.listItemContainer}>
               <Text>Spoken Language</Text>
-              <Text>English</Text>
+              <Text>{state.spokenLanguage}</Text>
             </View>
           }
         />

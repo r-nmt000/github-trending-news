@@ -10,6 +10,7 @@ import {Button, Icon} from "react-native-elements";
 import SelectLanguageScreen from "./src/screens/searchOption/SelectLanguageScreen";
 import SelectSpokenLanguageScreen from "./src/screens/searchOption/SelectSpokenLanguageScreen";
 import SelectPeriodScreen from "./src/screens/searchOption/SelectPeriodScreen";
+import { Provider as SearchOptionProvider } from "./src/context/searchOptionContext";
 
 const Stack = createStackNavigator();
 const SearchOptionStack = createStackNavigator();
@@ -46,7 +47,7 @@ const SearchOption = () => {
   )
 };
 
-export default function App() {
+const App = () => {
   const drawer = useRef(null);
   return (
     <DrawerLayout
@@ -89,7 +90,7 @@ export default function App() {
     </NavigationContainer>
     </DrawerLayout>
   )
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -99,3 +100,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default () => {
+  return (
+    <SearchOptionProvider>
+      <App/>
+    </SearchOptionProvider>
+  )
+}
