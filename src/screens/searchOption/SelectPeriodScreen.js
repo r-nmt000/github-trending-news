@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ListItem } from "react-native-elements";
+import { Context as SearchOptionContext } from "../../context/searchOptionContext";
 
-const SelectPeriodScreen = () => {
+const SelectPeriodScreen = ({navigation}) => {
+  const { setPeriod } = useContext(SearchOptionContext);
   return (
     <View style={styles.homeContainer}>
       <TouchableOpacity
         onPress={() => {
+          setPeriod('daily');
+          navigation.goBack();
         }}
       >
         <ListItem
@@ -17,6 +21,8 @@ const SelectPeriodScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
+          setPeriod('weekly');
+          navigation.goBack();
         }}
       >
         <ListItem
@@ -27,6 +33,8 @@ const SelectPeriodScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
+          setPeriod('monthly');
+          navigation.goBack();
         }}
       >
         <ListItem

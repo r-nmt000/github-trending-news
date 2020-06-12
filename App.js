@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext, useRef } from 'react';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import DrawerLayout from "react-native-drawer-layout";
@@ -11,6 +11,9 @@ import SelectLanguageScreen from "./src/screens/searchOption/SelectLanguageScree
 import SelectSpokenLanguageScreen from "./src/screens/searchOption/SelectSpokenLanguageScreen";
 import SelectPeriodScreen from "./src/screens/searchOption/SelectPeriodScreen";
 import { Provider as SearchOptionProvider } from "./src/context/searchOptionContext";
+import { Provider as TrendProvider } from "./src/context/trendContext";
+import { Context as SearchOptionContext } from "./src/context/searchOptionContext";
+import { Context as TrendContext } from "./src/context/trendContext";
 
 const Stack = createStackNavigator();
 const SearchOptionStack = createStackNavigator();
@@ -48,6 +51,8 @@ const SearchOption = () => {
 };
 
 const App = () => {
+  const { state } = useContext(SearchOptionContext);
+  const { fetchTrend } = useContext(TrendContext);
   const drawer = useRef(null);
   return (
     <DrawerLayout
@@ -56,6 +61,10 @@ const App = () => {
       drawerWidth={300}
       renderNavigationView={SearchOption}
       ref={drawer}
+      onDrawerClose={() => {
+        console.log('fetchtrend');
+        fetchTrend(state.language, state.period, state.spokenLanguage);
+      }}
     >
       <NavigationContainer>
         <Stack.Navigator
@@ -65,7 +74,7 @@ const App = () => {
             name="TrendList"
             component={TrendListScreen}
             options={{
-              title: "All / daily",
+              title: `${state.language ? state.language : 'All'} / ${state.period}`,
               headerRight: () => (
                 <Button
                   type='clear'
@@ -103,8 +112,10 @@ const styles = StyleSheet.create({
 
 export default () => {
   return (
-    <SearchOptionProvider>
-      <App/>
-    </SearchOptionProvider>
+    <TrendProvider>
+      <SearchOptionProvider>
+        <App/>
+      </SearchOptionProvider>
+    </TrendProvider>
   )
 }

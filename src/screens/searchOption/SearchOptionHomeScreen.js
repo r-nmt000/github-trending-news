@@ -50,7 +50,7 @@ const SearchOptionHomeScreen = ({navigation}) => {
           title={
             <View style={styles.listItemContainer}>
               <Text>Spoken Language</Text>
-              <Text>{state.spokenLanguage}</Text>
+              <Text>{state.spokenLanguage ? state.spokenLanguage : 'All'}</Text>
             </View>
           }
         />

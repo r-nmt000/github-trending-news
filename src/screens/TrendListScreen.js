@@ -1,28 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { fetchRepositories } from '@huchenme/github-trending';
 import TrendListItem from "../components/TrendListItem";
+import { Context as TrendContext } from "../context/trendContext";
+
 
 const TrendListScreen = ({navigation}) => {
-  const [repos, setRepos] = useState(null);
-
-  useEffect(() => {
-    fetchRepositories({language: '', since: 'monthly'}).then(
-      (repositories) => {
-        setRepos(repositories);
-      }
-    );
-  },[]);
-
-  if (!repos) {
-    return null;
-  }
-
+  const { state } = useContext(TrendContext);
+  console.log('render list');
+  console.log(state);
 
   return (
     <View>
       <FlatList
-        data={repos}
+        data={state.repositories}
+        extraData={state.repositories}
         keyExtractor={repo => repo.url}
         renderItem={({item}) => {
           return (

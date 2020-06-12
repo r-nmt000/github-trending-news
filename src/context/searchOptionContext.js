@@ -26,5 +26,5 @@ const setSpokenLanguage = dispatch => (spokenLanguage) => {
 export const { Context, Provider } = createDataContext(
   searchOptionReducer,
   {setLanguage, setPeriod, setSpokenLanguage},
-  { language: '', period:'daily', spokenLanguage: 'English'}
+  { language: '', period:'daily', spokenLanguage: ''}
 );

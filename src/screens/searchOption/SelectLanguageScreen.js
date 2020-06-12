@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { languages } from '@huchenme/github-trending';
-import {ListItem} from "react-native-elements";
+import { ListItem } from "react-native-elements";
 import { Context as SearchOptionContext } from "../../context/searchOptionContext";
 
-const SelectLanguageScreen = () => {
+const SelectLanguageScreen = ({ navigation }) => {
   const { setLanguage } = useContext(SearchOptionContext);
   return (
     <View>
@@ -15,7 +15,8 @@ const SelectLanguageScreen = () => {
           return (
             <TouchableOpacity
               onPress={() => {
-                setLanguage(item.name)
+                setLanguage(item.name);
+                navigation.goBack();
               }}>
               <ListItem
                 chevron
