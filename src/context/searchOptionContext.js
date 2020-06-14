@@ -16,12 +16,18 @@ const searchOptionReducer = (state, action) => {
 };
 
 const setLanguage = dispatch => (language) => {
+  if (language === 'All') {
+    language = '';
+  }
   dispatch({type: 'set_language', payload: language});
 };
 const setPeriod = dispatch => (period) => {
   dispatch({type: 'set_period', payload: period});
 };
 const setSpokenLanguage = dispatch => (spokenLanguage) => {
+  if (spokenLanguage === 'All') {
+    spokenLanguage = '';
+  }
   dispatch({type: 'set_spoken_language', payload: spokenLanguage});
 };
 const setSearchPressed = dispatch => (isSearchPressed) => {

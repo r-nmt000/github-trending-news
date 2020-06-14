@@ -1,27 +1,34 @@
 import React, { useContext } from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { languages } from '@huchenme/github-trending';
 import { ListItem } from "react-native-elements";
 import { Context as SearchOptionContext } from "../../context/searchOptionContext";
 
 const SelectLanguageScreen = ({ navigation }) => {
+  const languages = [
+    'All', 'C', 'C#', 'C++', 'Clojure', 'CoffeeScript', 'CommonLisp', 'Crystal', 'CSS',
+    'Elixir', 'Elm', 'EmacsLisp', 'Erlang', 'Go', 'Gradle', 'GraphQL', 'Groovy',
+    'Haml', 'Haskell', 'HTML', 'Java', 'JavaScript', 'JSON', 'JSX', 'Julia', 'Kotlin', 'Less',
+    'LLVM', 'Lua', 'Markdown', 'Objective-C', 'Perl', 'PHP',
+    'Python', 'R', 'Rust', 'Sass', 'Scala', 'Shell', 'SQL', 'Swift', 'Tex', 'TypeScript'
+  ];
   const { setLanguage } = useContext(SearchOptionContext);
+  console.log(languages);
   return (
     <View>
       <FlatList
         data={languages}
-        keyExtractor={lang => lang.name}
+        keyExtractor={language => language}
         renderItem={({item}) => {
           return (
             <TouchableOpacity
               onPress={() => {
-                setLanguage(item.name);
+                setLanguage(item);
                 navigation.goBack();
               }}>
               <ListItem
                 chevron
                 bottomDivider={true}
-                title={item.name}
+                title={item}
               />
             </TouchableOpacity>
           )

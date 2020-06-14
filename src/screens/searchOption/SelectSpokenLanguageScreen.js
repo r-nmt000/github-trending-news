@@ -5,23 +5,26 @@ import {ListItem} from "react-native-elements";
 import { Context as SearchOptionContext } from "../../context/searchOptionContext";
 
 const SelectSpokenLanguageScreen = ({ navigation }) => {
+  const spokenLanguages = [
+    'All', 'English', 'Chinese', 'French', 'German', 'Irish', 'Italian', 'Japanese', 'Korean', 'Latin', 'Russian'
+  ];
   const { setSpokenLanguage } = useContext(SearchOptionContext);
   return (
     <View>
       <FlatList
         data={spokenLanguages}
-        keyExtractor={lang => lang.name}
+        keyExtractor={lang => lang}
         renderItem={({item}) => {
           return (
             <TouchableOpacity
               onPress={() => {
-                setSpokenLanguage(item.name);
+                setSpokenLanguage(item);
                 navigation.goBack();
               }}>
               <ListItem
                 chevron
                 bottomDivider={true}
-                title={item.name}
+                title={item}
               />
             </TouchableOpacity>
           )
