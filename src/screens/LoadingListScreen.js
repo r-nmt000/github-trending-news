@@ -8,7 +8,6 @@ const LoadingListScreen = () => {
   const { fetchTrend } = useContext(TrendContext);
 
   useEffect(() => {
-    console.log('useEffect is called in LoadingListScreen');
     fetchTrend(state.language, state.period, state.spokenLanguage);
   }, []);
   return (

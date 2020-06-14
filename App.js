@@ -53,11 +53,10 @@ const SearchOption = ({drawer}) => {
 };
 
 const App = () => {
-  const { state } = useContext(SearchOptionContext);
+  const { state, setSearchPressed } = useContext(SearchOptionContext);
   const { state: { isLoading }, loadListScreen } = useContext(TrendContext);
   const drawer = useRef(null);
 
-  console.log('isLoading: %s', isLoading);
   if (isLoading) {
     return (
       <NavigationContainer>
@@ -66,7 +65,7 @@ const App = () => {
             name="LoadingListScreen"
             component={LoadingListScreen}
             options={{
-              title: `${state.language ? state.language : 'All'} / ${state.period}`,
+              title: `${state.language ? state.language : 'All lang'} / ${state.period} / ${state.spokenLanguage ? state.spokenLanguage : 'All spoken lang'}`,
             }}
           />
         </Stack.Navigator>
@@ -87,6 +86,7 @@ const App = () => {
       onDrawerClose={() => {
         if (state.isSearchPressed) {
           loadListScreen();
+          setSearchPressed(false);
         }
       }}
     >
@@ -98,7 +98,7 @@ const App = () => {
             name="TrendList"
             component={TrendListScreen}
             options={{
-              title: `${state.language ? state.language : 'All'} / ${state.period}`,
+              title: `${state.language ? state.language : 'All lang'} / ${state.period} / ${state.spokenLanguage ? state.spokenLanguage : 'All spoken lang'}`,
               headerRight: () => (
                 <Button
                   type='clear'

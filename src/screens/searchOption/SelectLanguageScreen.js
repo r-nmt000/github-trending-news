@@ -9,7 +9,7 @@ const SelectLanguageScreen = ({ navigation }) => {
     'Elixir', 'Elm', 'EmacsLisp', 'Erlang', 'Go', 'Gradle', 'GraphQL', 'Groovy',
     'Haml', 'Haskell', 'HTML', 'Java', 'JavaScript', 'JSON', 'JSX', 'Julia', 'Kotlin', 'Less',
     'LLVM', 'Lua', 'Markdown', 'Objective-C', 'Perl', 'PHP',
-    'Python', 'R', 'Rust', 'Sass', 'Scala', 'Shell', 'SQL', 'Swift', 'Tex', 'TypeScript'
+    'Python', 'R', 'Ruby', 'Rust', 'Sass', 'Scala', 'Shell', 'SQL', 'Swift', 'Tex', 'TypeScript'
   ];
   const { setLanguage } = useContext(SearchOptionContext);
   console.log(languages);

@@ -6,8 +6,6 @@ import { Context as TrendContext } from "../context/trendContext";
 
 const TrendListScreen = ({navigation}) => {
   const { state } = useContext(TrendContext);
-  console.log('render list');
-  console.log(state);
 
   return (
     <View>
