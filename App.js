@@ -85,7 +85,9 @@ const App = () => {
       }}
       ref={drawer}
       onDrawerClose={() => {
-        loadListScreen();
+        if (state.isSearchPressed) {
+          loadListScreen();
+        }
       }}
     >
       <NavigationContainer>

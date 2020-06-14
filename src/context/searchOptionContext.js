@@ -8,6 +8,8 @@ const searchOptionReducer = (state, action) => {
       return { ...state, period: action.payload };
     case 'set_spoken_language':
       return { ...state, spokenLanguage: action.payload };
+    case 'set_search_pressed':
+      return { ...state, isSearchPressed: action.payload};
     default:
       return state;
   }
@@ -22,9 +24,12 @@ const setPeriod = dispatch => (period) => {
 const setSpokenLanguage = dispatch => (spokenLanguage) => {
   dispatch({type: 'set_spoken_language', payload: spokenLanguage});
 };
+const setSearchPressed = dispatch => (isSearchPressed) => {
+  dispatch({type: 'set_search_pressed', payload: isSearchPressed});
+};
 
 export const { Context, Provider } = createDataContext(
   searchOptionReducer,
-  {setLanguage, setPeriod, setSpokenLanguage},
+  {setLanguage, setPeriod, setSpokenLanguage, setSearchPressed},
   { language: '', period:'daily', spokenLanguage: ''}
 );
