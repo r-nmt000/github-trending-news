@@ -1,0 +1,30 @@
+import React, { useEffect, useContext } from 'react';
+import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
+import { Context as TrendContext } from "../context/trendContext";
+import { Context as SearchOptionContext } from "../context/searchOptionContext"
+
+const LoadingListScreen = () => {
+  const { state } = useContext(SearchOptionContext);
+  const { fetchTrend } = useContext(TrendContext);
+
+  useEffect(() => {
+    console.log('useEffect is called in LoadingListScreen');
+    fetchTrend(state.language, state.period, state.spokenLanguage);
+  }, []);
+  return (
+    <View style={styles.container}>
+      <ActivityIndicator size="large"/>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white'
+  }
+});
+
+export default LoadingListScreen;

@@ -14,11 +14,12 @@ import { Provider as SearchOptionProvider } from "./src/context/searchOptionCont
 import { Provider as TrendProvider } from "./src/context/trendContext";
 import { Context as SearchOptionContext } from "./src/context/searchOptionContext";
 import { Context as TrendContext } from "./src/context/trendContext";
+import LoadingListScreen from "./src/screens/LoadingListScreen";
 
 const Stack = createStackNavigator();
 const SearchOptionStack = createStackNavigator();
 
-const SearchOption = () => {
+const SearchOption = ({drawer}) => {
   return (
     <NavigationContainer>
       <SearchOptionStack.Navigator
@@ -28,6 +29,7 @@ const SearchOption = () => {
         <SearchOptionStack.Screen
           name="SearchOptionHomeScreen"
           component={SearchOptionHomeScreen}
+          initialParams={{drawer: drawer}}
           options={{ title: "Search Options"}}
         />
         <SearchOptionStack.Screen
@@ -52,18 +54,38 @@ const SearchOption = () => {
 
 const App = () => {
   const { state } = useContext(SearchOptionContext);
-  const { fetchTrend } = useContext(TrendContext);
+  const { state: { isLoading }, loadListScreen } = useContext(TrendContext);
   const drawer = useRef(null);
+
+  console.log('isLoading: %s', isLoading);
+  if (isLoading) {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="LoadingListScreen"
+            component={LoadingListScreen}
+            options={{
+              title: `${state.language ? state.language : 'All'} / ${state.period}`,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
+  }
   return (
     <DrawerLayout
       drawerBackgroundColor='white'
       drawerPosition='right'
       drawerWidth={300}
-      renderNavigationView={SearchOption}
+      renderNavigationView={() => {
+        return <SearchOption
+          drawer={drawer}
+        />
+      }}
       ref={drawer}
       onDrawerClose={() => {
-        console.log('fetchtrend');
-        fetchTrend(state.language, state.period, state.spokenLanguage);
+        loadListScreen();
       }}
     >
       <NavigationContainer>
@@ -80,7 +102,7 @@ const App = () => {
                   type='clear'
                   icon={
                     <Icon
-                      name="filter"
+                      name="search1"
                       type="antdesign"
                     />
                   }
@@ -94,6 +116,10 @@ const App = () => {
           <Stack.Screen
             name="TrendDetail"
             component={TrendDetailScreen}
+          />
+          <Stack.Screen
+            name="LoadingListScreen"
+            component={LoadingListScreen}
           />
         </Stack.Navigator>
     </NavigationContainer>
