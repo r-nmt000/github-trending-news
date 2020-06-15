@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button, ListItem} from "react-native-elements";
 import { Context as SearchOptionContext } from "../../context/searchOptionContext";
 
-const SearchOptionHomeScreen = ({navigation, route}) => {
+const SearchOptionHomeScreen = ({navigation, drawer}) => {
   const { state, setSearchPressed } = useContext(SearchOptionContext);
   return (
     <View style={styles.homeContainer}>
@@ -46,7 +46,7 @@ const SearchOptionHomeScreen = ({navigation, route}) => {
         title="Search"
         onPress={ () => {
           setSearchPressed(true);
-          route.params.drawer.current.closeDrawer();
+          drawer.current.closeDrawer();
         }}
       />
     </View>

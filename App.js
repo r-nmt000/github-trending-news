@@ -28,10 +28,10 @@ const SearchOption = ({drawer}) => {
       >
         <SearchOptionStack.Screen
           name="SearchOptionHomeScreen"
-          component={SearchOptionHomeScreen}
-          initialParams={{drawer: drawer}}
           options={{ title: "Search Options"}}
-        />
+        >
+          {props => <SearchOptionHomeScreen {...props} drawer={drawer}/>}
+        </SearchOptionStack.Screen>
         <SearchOptionStack.Screen
           name="SelectLanguageScreen"
           component={SelectLanguageScreen}
