@@ -40,22 +40,6 @@ const SearchOptionHomeScreen = ({navigation, route}) => {
             }
           />
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("SelectSpokenLanguageScreen")
-          }}
-        >
-          <ListItem
-            chevron
-            bottomDivider={true}
-            title={
-              <View style={styles.listItemContainer}>
-                <Text>Spoken Language</Text>
-                <Text>{state.spokenLanguage ? state.spokenLanguage : 'All'}</Text>
-              </View>
-            }
-          />
-        </TouchableOpacity>
       </View>
       <Button
         style={styles.button}

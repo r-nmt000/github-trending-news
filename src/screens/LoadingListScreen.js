@@ -8,7 +8,7 @@ const LoadingListScreen = () => {
   const { fetchTrend } = useContext(TrendContext);
 
   useEffect(() => {
-    fetchTrend(state.language, state.period, state.spokenLanguage);
+    fetchTrend(state.language, state.period);
   }, []);
   return (
     <View style={styles.container}>

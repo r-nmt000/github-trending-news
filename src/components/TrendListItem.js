@@ -15,15 +15,15 @@ const TrendListItem = ({name, avatar, description, stars, forks, author}) => {
           <Text numberOfLines={1}> {description} </Text>
           <View style={styles.iconContainer}>
             <View style={styles.statsContainer}>
-              <Icon name='star-o' type='font-awesome' size='14' />
+              <Icon name='star-o' type='font-awesome' size={14} />
               <Text> {stars}</Text>
             </View>
             <View style={styles.statsContainer}>
-              <Icon name='code-fork' type='font-awesome' size='14' />
+              <Icon name='code-fork' type='font-awesome' size={14} />
               <Text> {forks}</Text>
             </View>
             <View style={styles.statsContainer}>
-              <Icon name='person-outline' type='material' size='14' />
+              <Icon name='person-outline' type='material' size={14} />
               <Text> {author}</Text>
             </View>
           </View>

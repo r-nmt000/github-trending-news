@@ -65,7 +65,7 @@ const App = () => {
             name="LoadingListScreen"
             component={LoadingListScreen}
             options={{
-              title: `${state.language ? state.language : 'All lang'} / ${state.period} / ${state.spokenLanguage ? state.spokenLanguage : 'All spoken lang'}`,
+              title: `${state.language ? state.language : 'All'} / ${state.period}`,
             }}
           />
         </Stack.Navigator>
@@ -98,7 +98,7 @@ const App = () => {
             name="TrendList"
             component={TrendListScreen}
             options={{
-              title: `${state.language ? state.language : 'All lang'} / ${state.period} / ${state.spokenLanguage ? state.spokenLanguage : 'All spoken lang'}`,
+              title: `${state.language ? state.language : 'All'} / ${state.period}`,
               headerRight: () => (
                 <Button
                   type='clear'
@@ -118,6 +118,7 @@ const App = () => {
           <Stack.Screen
             name="TrendDetail"
             component={TrendDetailScreen}
+            options={({route}) => ({title: route.params.name})}
           />
           <Stack.Screen
             name="LoadingListScreen"

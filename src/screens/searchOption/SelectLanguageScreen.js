@@ -5,7 +5,7 @@ import { Context as SearchOptionContext } from "../../context/searchOptionContex
 
 const SelectLanguageScreen = ({ navigation }) => {
   const languages = [
-    'All', 'C', 'C#', 'C++', 'Clojure', 'CoffeeScript', 'CommonLisp', 'Crystal', 'CSS',
+    'All', 'C', 'C#', 'C++', 'Clojure', 'CommonLisp', 'Crystal', 'CSS',
     'Elixir', 'Elm', 'EmacsLisp', 'Erlang', 'Go', 'Gradle', 'GraphQL', 'Groovy',
     'Haml', 'Haskell', 'HTML', 'Java', 'JavaScript', 'JSON', 'JSX', 'Julia', 'Kotlin', 'Less',
     'LLVM', 'Lua', 'Markdown', 'Objective-C', 'Perl', 'PHP',

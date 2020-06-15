@@ -17,7 +17,7 @@ const TrendListScreen = ({navigation}) => {
           return (
             <TouchableOpacity
               onPress={() => {
-              navigation.navigate('TrendDetail', {url: item.url});
+              navigation.navigate('TrendDetail', {url: item.url, name: item.name});
             }}>
               <TrendListItem
                 name={item.name}

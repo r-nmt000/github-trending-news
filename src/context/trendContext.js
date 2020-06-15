@@ -16,9 +16,8 @@ const loadListScreen = dispatch => () => {
   dispatch({type: 'load_list_screen'})
 };
 
-const fetchTrend = dispatch => (language, period, spokenLanguage) => {
-  console.log(spokenLanguage);
-  fetchRepositories({language: language, since: period, spoken_language_code: spokenLanguage})
+const fetchTrend = dispatch => (language, period) => {
+  fetchRepositories({language: language, since: period})
     .then((repositories) => {
       dispatch({type: 'fetch_trend', payload: repositories});
     });
