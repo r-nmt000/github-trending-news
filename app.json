@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#f3f3f3"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,7 +22,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.r-nmt000",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.r-nmt000",
+      "versionCode": 1,
+      "permissions": []
     }
   }
 }
